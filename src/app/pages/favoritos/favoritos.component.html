@@ -1,0 +1,100 @@
+<header>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</header>
+
+<div id="wrapper" class="card-container" *ngIf="getValor()">
+  <div *ngIf="this.fav[0] == undefined" id="vacio">
+    <div class="beta">
+      <nav class="shelf">
+        <a class="book home-page"></a>
+        <a class="book about-us"></a>
+        <a class="book contact"></a>
+        <a class="book faq">.</a>
+        <span class="book not-found"></span>
+        <span class="door left"></span>
+        <span class="door right"></span>
+      </nav>
+      <h1>No se ha encontrado nada</h1>
+      <p>Añade algún libro a favoritos</p>
+    </div>
+  </div>
+  <!------------------------------------- Cards ---------------------------------------------->
+  <div class="row misFavoritos" *ngIf="this.fav">
+    <div class="col-lg-6 col-md-12 col-sm-12" *ngFor="let item of fav; let i = index">
+      <div class="book-card book-card-fav">
+        <div class="content-wrapper">
+          <img src="{{ item.photo }}" alt="" class="book-card-img">
+          <div class="card-content">
+            <div class="book-name">{{ item.title }}</div>
+            <div class="book-by"><strong>by</strong> {{ item.author }}</div>
+            <div class="book-sum card-sum">{{ item.description }} </div>
+            <div *ngIf="tienePeticion(item.book_id); else esFalse">
+              <button class="v-btn-card" routerLink="../peticiones">
+                Petición creada
+              </button>
+            </div>
+            <ng-template #esFalse>
+              <button class="v-btn-card" (click)="getBookUser(item.book_id)" (click)="openModal(petition)">
+                Pedir libro
+              </button>
+            </ng-template>
+            <button type="button" class="btn-card-close" aria-label="Close" (click)="delFav(item.favorites_id, i)">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!----------------------------------- Modal para pedir libro ----------------------------------->
+<ng-template #petition>
+  <div class="modal-petition">
+    <div class="modal-header">
+      <h3 class="modal-title pull-left">Haz tu petición</h3>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div *ngIf="userbook[0]; else esFalse">
+        <h4>Selecciona el usuario del libro</h4>
+        <select name="libro" #elegido>
+          <option value="{{item.user_id}}" *ngFor="let item of userbook"><b>Nick: {{ item.nickname }} -</b>
+            Ubicación: {{ item.place }}</option>
+        </select>
+        <button class="v-btn" (click)="modalRef.hide()" (click)="postPeticion(elegido.value)"
+          (click)="openModal(promptPetition)">
+          Aceptar
+        </button>
+      </div>
+      <ng-template #esFalse>
+        <h4>Ups! Ya tienes este libro</h4>
+      </ng-template>
+    </div>
+  </div>
+</ng-template>
+
+<!----------------------------------- Modal para pedir libro ----------------------------------->
+<ng-template #promptPetition>
+  <div class="modal-prompt-petition">
+    <div class="modal-body">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="success-checkmark">
+        <div class="check-icon">
+          <span class="icon-line line-tip"></span>
+          <span class="icon-line line-long"></span>
+          <div class="icon-circle"></div>
+          <div class="icon-fix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <h4>¡Petición realizada!</h4>
+    </div>
+  </div>
+</ng-template>

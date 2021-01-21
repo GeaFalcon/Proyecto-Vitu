@@ -1,0 +1,102 @@
+<div id="wrapper" class="card-container" *ngIf="getValor()">
+  <div class="row" *ngIf="request[0]; else noHay">
+    <div class="col-lg-6 col-md-12 col-sm-12" *ngFor="let item of request; let i = index">
+      <div class="book-card book-card-req" [class]="colorRequest(item.status)">
+        <div class="content-wrapper">
+          <img src="{{ item.photo }}" alt="" class="book-card-img">
+          <div class="card-content">
+            <div class="book-name">{{ item.title }}
+              <div class="book-by">by<strong> {{ item.author }}</strong> </div>
+            </div>
+            <div class="nombreTitular" *ngIf="item.status == 'Pendiente'">
+              A
+              <span class="owner" (click)="openModal(infoUser)" (click)="getUser(item.user_id)"
+                (click)="getBookUserRequest(item.user_id)">{{ item.nickname }}</span>
+              le gustaría leer este libro
+            </div>
+
+            <div *ngIf="item.status == 'Pendiente'; else esFalse">
+              <div class="btn-container">
+                <div class="v-btn-card" (click)="putSolicitud(item.requested_id)">
+                  Aceptar
+                </div>
+                <div class="v-btn-card cancel" (click)="putSolicitud2(item.requested_id, i)">
+                  Rechazar
+                </div>
+              </div>
+            </div>
+            <ng-template #esFalse>
+              <button type="button" class="btn-card-close" aria-label="Close"
+                (click)="putSolicitud2(item.requested_id, i)">
+                <span aria-hidden="true">x</span>
+              </button>
+              Has aceptado la solicitud
+              <br>
+              <strong>{{ item.email }}</strong>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!----------------------------------- Modal para información del usuario ----------------------------------->
+  <ng-template #infoUser>
+    <div class="modal-user">
+      <div class="modal-header">
+        <h3 class="modal-title pull-left">{{user.nickname}}</h3>
+        <button type="button" (click)="modalRef.hide()" class="close pull-right" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-user-top row">
+          <div class="modal-user-info col-8">
+            <div>
+              <p>Nombre</p>
+              <p>{{user.name}}</p>
+            </div>
+            <div>
+              <p>Residencia</p>
+              <p>{{user.place}}</p>
+            </div>
+          </div>
+          <div class="modal-user-img col-4">
+            <img src="{{user.photo}}" alt="">
+          </div>
+        </div>
+
+        <div class="modal-book-bottom row">
+          <div class="modal-book-desc col-12">
+            <h4>Acerca de mí:</h4>
+            <p>{{user.aboutYou}}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-footer style">
+      <div class="row">
+        <div class="col-6 book-img-container" *ngFor="let book of bookUserRequest">
+          <div class="modal-book-img">
+          <img src="{{book.photo}}" alt="">
+        </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #noHay>
+  <div class="beta">
+    <nav class="shelf">
+      <a class="book home-page"></a>
+      <a class="book about-us"></a>
+      <a class="book contact"></a>
+      <a class="book faq"></a>
+      <span class="book not-found"></span>
+      <span class="door left"></span>
+      <span class="door right"></span>
+    </nav>
+    <h1>No tienes ninguna solicitud</h1>
+  </div>
+</ng-template>

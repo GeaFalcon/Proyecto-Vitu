@@ -1,0 +1,135 @@
+@import '../../app.component.scss';
+
+h1 {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+h1+p {
+  text-align: center;
+}
+
+
+* {
+  font-family: "Baloo Paaji 2", cursive;
+}
+
+/* ------------------------------ Mixin para los -------------------------- */
+
+@include colorRequest($color-pie-blue, $color-success, $color-warning, $color-danger);
+
+/* ------------------------------ Modal info del usuario -------------------------- */
+
+
+.modal-user {
+  max-height: 640px;
+
+  .modal-header {
+    border-bottom: 0;
+
+    h3 {
+      border-bottom: 2px solid $color-primary;
+      padding: 0 .5em;
+    }
+  }
+
+  .modal-body {
+
+    .modal-user-top,
+    .modal-user-img {
+      padding: 0;
+
+      .modal-user-info {
+        div {
+          padding: .5em .5em;
+          border-bottom: 1px solid $color-primary;
+
+          p {
+            margin-bottom: 0;
+
+            &:first-child {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      .modal-user-img {
+        max-width: 120px;
+        margin: 0 auto;
+        border-radius: 50%;
+        box-shadow: 4px 4px 3px 0px $color-grey-dark;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .modal-book-desc {
+      margin-top: 2em;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.modal-footer {
+  border: none;
+  max-height: 304px;
+  overflow: scroll;
+  overflow-x: hidden;
+
+  .book-img-container {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+  }
+
+  .modal-book-img {
+    max-width: 120px;
+    height: 168px;
+    margin: 16px 8px 0 8px;
+    border-radius: 4px;
+    box-shadow: 4px 4px 3px 0px $color-grey-dark;
+    padding: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+  }
+}
+
+// .scrollbar {
+//   margin-left: 30px;
+//   float: left;
+//   height: 300px;
+//   width: 65px;
+//   background: #F5F5F5;
+//   overflow-y: scroll;
+//   margin-bottom: 25px;
+// }
+
+.style::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+.style::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+.style::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $color-primary;
+}

@@ -1,0 +1,169 @@
+/* Mixin para control del media query */
+@mixin breakpoint($point) {
+  @if $point==desktop {
+    @media (max-width: 1440px) {
+      @content;
+    }
+  }
+
+  @else if $point==laptop {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+
+  @else if $point==tablet {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+
+  @else if $point==mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @else if $point==xsmobile {
+    @media (max-width: 375px) {
+      @content;
+    }
+  }
+}
+
+/* Mixin para colores en cards de peticiones */
+@mixin colorPetition($color1, $color2, $color3) {
+  .book-card {
+    background-color: $color1;
+
+    .owner {
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      color: #59512C;
+
+      &:hover {
+        text-decoration: underline;
+        transition: .3s;
+      }
+    }
+
+    button {
+      color: $color1;
+      transition: .3s;
+
+      &:hover {
+        color: #A69651;
+      }
+
+      &.cancel {
+        color: $color3;
+
+        &:hover {
+          color: #AD4949;
+        }
+      }
+    }
+
+    &.success {
+      background-color: $color2;
+
+      .owner {
+        color: #376644;
+      }
+
+      button {
+        color: $color2;
+
+        &:hover {
+          color: #539967;
+        }
+
+        &.cancel {
+          color: $color3;
+
+          &:hover {
+            color: #AD4949;
+          }
+        }
+      }
+    }
+
+    &.danger {
+      background-color: $color3;
+
+      .owner {
+        color: #7A3333;
+      }
+
+      button {
+        color: $color3;
+
+        &:hover {
+          color: #AD4949;
+        }
+      }
+    }
+  }
+}
+
+
+/* Mixin para colores en cards de solicitudes */
+@mixin colorRequest($color1, $color2, $color3, $color4) {
+  .book-card {
+    background-color: $color3;
+
+    .owner {
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      color: #59512C;
+
+      &:hover {
+        text-decoration: underline;
+        transition: .3s;
+      }
+    }
+
+    .v-btn-card {
+      color: $color2;
+      transition: .3s;
+      cursor: pointer;
+
+      &:hover {
+        color: #539967;
+      }
+
+      &.cancel {
+        color: $color4;
+
+        &:hover {
+          color: #AD4949;
+        }
+      }
+    }
+
+    &.success {
+      background-color: $color2;
+
+      .owner {
+        color: #376644;
+
+        &:hover {
+          text-decoration: underline;
+          transition: .3s;
+        }
+      }
+
+      .v-btn-card {
+        color: $color4;
+
+        transition: .3s;
+
+        &:hover {
+          color: #AD4949;
+        }
+      }
+    }
+  }
+}

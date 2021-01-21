@@ -1,0 +1,163 @@
+<header>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</header>
+
+<div id="wrapper" *ngIf="getValor()" class="card-container">
+  <div class="boton" *ngIf="misLibros[0];">
+    <button class="v-btn upload" type="button" data-toggle="modal" data-target="#staticBackdrop2">
+      ¡Publica un nuevo libro!
+    </button>
+  </div>
+  <div class="row" *ngIf="misLibros[0]; else noHay">
+    <div class="book-cards  col-lg-6 col-md-12 col-sm-12" *ngFor="let item of misLibros; let i = index">
+      <div class="book-card book-card-mybooks">
+        <div class="content-wrapper">
+          <img src="{{ item.photo }}" alt="" class="book-card-img">
+          <div class="card-content">
+            <div class="book-name">{{ item.title }}
+              <div class="book-by">by<strong> {{ item.author }}</strong></div>
+            </div>
+            <div class="book-sum card-sum">{{ item.description }}</div>
+            <div class="btn-container">
+            <button class="v-btn-card" type="button" data-target="#staticBackdrop3" data-toggle="modal"
+              (click)="getLibro(item.book_id)">
+              Editar
+            </button>
+            <button class="v-btn-card cancel" type="button" (click)="borrarLibro(item.book_id, i)">
+              Eliminar
+            </button>
+          </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--cierra a la clase mis libros-->
+</div>
+<!--cierra a la clase container-->
+
+<!---------------- Modal Subir Libro---------------->
+<div class="modal fade" id="staticBackdrop2" data-backdrop="static" tabindex="-1" role="dialog"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title pull-left">¡PUBLICA UN NUEVO LIBRO!</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="flex">
+          <div class="izq row">
+            <input type="text" placeholder="Título..." #title/>
+            <input type="text" placeholder="Autor" #author/>
+            <input type="text" placeholder="Año de publicación" #year />
+            <input type="text" placeholder="Editorial" #editorial />
+            <select name="" id="" #type>
+              <option>Misterio</option>
+              <option>Fantasia</option>
+              <option>Ciencia Ficcion</option>
+              <option>Historico</option>
+              <option>Biografico</option>
+              <option>Filosofia</option>
+              <option>Aventura</option>
+              <option>Romantico</option>
+              <option>Novela negra</option>
+              <option>Comic</option>
+              <option>Otros</option>
+            </select>
+            <input type="text" placeholder="Enlace de la foto" #photo/>
+          </div>
+          <div class="imagen"></div>
+        </div>
+        <textarea  rows="5" placeholder="Descripción del libro... ¡sin spoilers!" #description></textarea>
+      </div>
+      <div class="modal-footer">
+        <!-- <button class="cambiar" type="submit" data-dismiss="modal" (click)="(1)">Cambiar foto</button> -->
+        <button class="v-btn" type="submit" data-dismiss="modal" (click)="
+            insertarLibro(title.value, author.value, year.value, editorial.value, type.value, photo.value, description.value)">
+          Publicar libro
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------------- Modal Modificar Libro ---------------->
+<div class="modal fade" id="staticBackdrop3" data-backdrop="static" tabindex="-1" role="dialog"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title pull-left">¡MODIFICA UN LIBRO!</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="flex">
+          <div class="izq row">
+            <input type="text" value="{{ editarLibro.title }}" #title2 />
+            <input type="text" value="{{ editarLibro.author }}" #author2 />
+            <input type="text" value="{{ editarLibro.year }}" #year2 />
+            <input type="text" value="{{ editarLibro.editorial }}" #editorial2 />
+            <select name="" id="" #type2>
+              <option>Misterio</option>
+              <option>Fantasia</option>
+              <option>Ciencia Ficcion</option>
+              <option>Historico</option>
+              <option>Biografico</option>
+              <option>Filosofia</option>
+              <option>Aventura</option>
+              <option>Romantico</option>
+              <option>Novela negra</option>
+              <option>Comic</option>
+              <option>Otros</option>
+            </select>
+            <input type="text" value="{{ editarLibro.photo }}" #photo2 />
+            <textarea rows="5" value="{{ editarLibro.description }}" #description2></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!-- <button class="cambiar" type="submit" data-dismiss="modal" (click)="(1)">Cambiar foto</button> -->
+        <button class="v-btn" type="submit" data-dismiss="modal" (click)="
+            modificarLibro(
+              title2.value,
+              author2.value,
+              year2.value,
+              editorial2.value,
+              type2.value,
+              photo2.value,
+              description2.value
+            )
+          ">
+          Modificar libro
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noHay>
+  
+  <div class="beta">
+    <nav class="shelf">
+      <a class="book home-page"></a>
+      <a class="book about-us"></a>
+      <a class="book contact"></a>
+      <a class="book faq"></a>
+      <span class="book not-found"></span>
+      <span class="door left"></span>
+      <span class="door right"></span>
+    </nav>
+    <h1>No tienes ningun libro</h1>
+  </div>
+  <div class="boton">
+    <button  class="v-btn upload" type="button" data-toggle="modal" data-target="#staticBackdrop2">
+      ¡Publica un nuevo libro!
+    </button>
+  </div>
+</ng-template>

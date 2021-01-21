@@ -1,0 +1,300 @@
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Estilos generales para cards */
+.book-cards {
+  position: relative;
+}
+
+.book-card {
+  margin: 64px 0px 0px 0px;
+  background-color: $color-pie-blue;
+  max-height: 240px;
+  width: 100%;
+  box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 0 0 20px 20px;
+  transition: .3s ease;
+
+  button {
+    margin-top: 16px;
+  }
+}
+
+.content-wrapper {
+  display: flex;
+  //border-bottom: 1px solid #ebedef;
+  position: relative;
+}
+
+.book-card-img {
+  max-width: 160px;
+  height: 250px;
+  margin-top: -25px;
+  border-radius: 4px;
+  box-shadow: 0px 1px 7px 2px #c7c9d3;
+  border-bottom: 1px solid #dcddde;
+  object-fit: cover;
+  margin-bottom: 20px;
+  transition: .3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+
+.card-content {
+  color: white;
+  padding: 30px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.book-name {
+  font-size: 22px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.book-sum {
+  margin-top: 20px;
+  font-size: 14px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.book-by {
+  font-size: 13px;
+  margin-top: 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+
+
+/* Estilos para cards de favoritos */
+.book-card.book-card-fav {
+  button:not(.btn-card-close) {
+    position: absolute;
+    right: 8%;
+    bottom: 10%;
+  }
+
+  p {
+    margin-top: 16px;
+    float: right;
+  }
+
+  .btn-card-close {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    top: 0%;
+    right: 4%;
+    margin: 0;
+    padding: 0;
+    color: $color-danger;
+    background-color: transparent;
+    border: none;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.15)
+    }
+
+    &:active {
+      transform: scale(.9)
+    }
+  }
+}
+
+/* Estilos para cards de peticiones */
+.book-card.book-card-pet {
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  button {
+    align-self: flex-end;
+    float: right;
+  }
+}
+
+/* Estilos para cards de solicitudes */
+.book-card.book-card-req {
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .btn-container {
+    position: relative;
+    display: inline;
+
+    .v-btn-card {
+      display: inline;
+    }
+
+    .v-btn-card:first-child {
+      margin-right: 16px;
+    }
+  }
+
+  .btn-card-close {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    top: 0%;
+    right: 4%;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: transparent;
+    border: none;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.15)
+    }
+
+    &:active {
+      transform: scale(.9)
+    }
+  }
+}
+
+/* Estilos para cards de mis libros */
+.book-card-mybooks {
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .v-btn-card:first-child {
+    margin-right: 16px;
+  }
+
+  .v-btn-card.cancel {
+    color: $color-danger;
+
+    &:hover {
+      color: #AD4949;
+    }
+  }
+}
+
+/*------------------------------ Estilos para las cards del carousel ------------------------------ */
+.book-cards.book-carousel {
+  padding-bottom: 48px;
+  padding-top: 0;
+  position: relative;
+
+
+  .book-card {
+    margin-top: 0;
+    height: 240px;
+    width: 100%;
+    box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 1px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background-color: $color-pie-blue;
+    ;
+  }
+
+  .content-wrapper {
+    display: flex;
+    //border-bottom: 1px solid #ebedef;
+    position: relative;
+  }
+
+  .book-card-img {
+    width: 160px;
+    height: 250px;
+    margin-top: 24px;
+    margin-left: 24px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 7px 2px #c7c9d3;
+    border-bottom: 1px solid #dcddde;
+    object-fit: cover;
+    margin-bottom: 20px;
+    transition: .3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  .card-content {
+    color: white;
+    padding: 30px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .book-name {
+    font-size: 22px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .book-sum {
+    margin-top: 20px;
+    font-size: 14px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .book-by {
+    font-size: 13px;
+    margin-top: 4px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+
+/*------------------------- Estilos para las cards de store -------------------------------*/
+.book-card-store {
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .v-btn-card:first-child {
+    margin-right: 16px;
+  }
+
+  .v-btn-card.cancel {
+    color: $color-danger;
+
+    &:hover {
+      color: #AD4949;
+    }
+  }
+}

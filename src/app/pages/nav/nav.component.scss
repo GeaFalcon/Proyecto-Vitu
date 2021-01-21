@@ -1,0 +1,344 @@
+@import "../../app.component.scss";
+
+* {
+  font-family: "Baloo Paaji 2", cursive;
+}
+
+section {
+  position: sticky;
+    top: 0;
+    z-index: 30;
+}
+
+// Outer navigation wrapper
+.navigation {
+  position: relative;
+  z-index: 999;
+  height: $nav-height;
+  background: $color-primary;
+  box-shadow: 0 3px 12px #00000026;
+}
+
+/* Logo */
+.brand {
+  position: absolute;
+  padding-left: 33px;
+  float: left;
+  line-height: $nav-height;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.4em;
+
+  a,
+  a:visited {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+img {
+  height: 110px;
+  position: absolute;
+  top: -40px;
+  left: -48px;
+  cursor: pointer;
+}
+
+/* Contenedor sin padding */
+.nav-container {
+  max-width: $content-width;
+  margin: 0 auto;
+}
+
+/* Control principal de la barra de navegación */
+nav {
+  float: right;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      float: left;
+      position: relative;
+      min-width: 132px;
+      text-align: center;
+
+      @include breakpoint(mobile) {
+        float: initial;
+        text-align: start;
+        width: 100%;
+      }
+
+      a,
+      a:visited {
+        font-weight: bold;
+        display: block;
+        padding: 0 20px;
+        line-height: $nav-height;
+        background: $nav-background;
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          background: $color-hover;
+          color: white;
+          transition: 0.4s;
+        }
+
+        &:not(:only-child):after {
+          padding-left: 4px;
+          content: " ▾";
+        }
+
+        a:focus {
+          background-color: black;
+        }
+      }
+
+      /* Lista del dropdown */
+      ul li {
+        min-width: 190px;
+
+        a {
+          padding: 15px;
+          line-height: 20px;
+        }
+      }
+    }
+
+    li:last-child {
+
+      a,
+      a:visited {
+        color: $color-hover;
+
+        &:hover {
+          background-color: $color-hover;
+          color: white;
+        }
+      }
+
+    }
+  }
+}
+
+.p1:target,
+.p2:target,
+.p3:target,
+.p4:target,
+.p5:target {
+  background-color: green;
+}
+
+/* Clases y control para el dropdown */
+.drop-pointer {
+  cursor: pointer;
+}
+
+.nav-dropdown {
+  &-hidden {
+    display: none;
+  }
+
+  &-toggle {
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    right: 0px;
+    display: block;
+
+    @include breakpoint(mobile) {
+      left: 0px;
+      width: 100%;
+    }
+  }
+}
+
+/* Mobile navigation */
+/* Union con el "toggle" de móvil */
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: $nav-background;
+  height: $nav-height;
+  width: $nav-height;
+}
+
+@media only screen and (max-width: 767px) {
+
+  /* Hamburguesa de la navegación para ver sólo en móvil */
+  .nav-mobile {
+    display: block;
+  }
+
+  nav {
+    width: 100%;
+    padding: $nav-height 0 15px;
+
+    .nav-list-hidden {
+      display: none;
+
+      li {
+        width: 100%;
+        float: none;
+
+        a {
+          padding: 15px;
+          line-height: 20px;
+        }
+
+        ul li a {
+          padding-left: 30px;
+        }
+      }
+    }
+  }
+
+  .nav-dropdown {
+    position: static;
+  }
+}
+
+@media screen and (min-width: $breakpoint) {
+  .nav-list-toggle {
+    display: block;
+  }
+}
+
+/* Clases para el botón de la vista móvil */
+#nav-toggle {
+  position: absolute;
+  //   left: 18px;
+  top: 18px;
+  cursor: pointer;
+  padding: 10px 35px 16px 0px;
+
+  span,
+  span:before,
+  span:after {
+    cursor: pointer;
+    border-radius: 2px;
+    height: 4px;
+    width: 32px;
+    background: $color-primary;
+    position: absolute;
+    display: block;
+    content: "";
+    transition: all 300ms ease-in-out;
+  }
+
+  span:before {
+    top: -8px;
+  }
+
+  span:after {
+    bottom: -8px;
+  }
+
+  &.active span {
+
+    // background-color: transparent;
+    &:before,
+    &:after {
+      top: 0;
+    }
+
+    &:before {
+      //   transform: rotate(45deg);
+      transform: translate3d(0, 0, 0);
+    }
+
+    &:after {
+      //   transform: rotate(-45deg);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+
+//Dropdown para solicitudes//
+.dropdown {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+
+  &:hover {
+    .dropdown-content {
+      // Para ver el contenido
+      display: block;
+      justify-content: flex-end;
+    }
+
+    .dropbtn {
+      // Como se ve el boton 
+      background-color: $color-primary;
+      color: white;
+
+    }
+  }
+
+  .dropbtn {
+    cursor: pointer;
+    padding: 0 20px;
+    line-height: $nav-height;
+    background: $nav-background;
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      background: $color-hover;
+      color: white;
+      transition: 0.4s;
+    }
+
+    &:after {
+      padding-left: 4px;
+      content: " ▾";
+    }
+  }
+
+  //El dropdown no se ve por defecto
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+    @include breakpoint(mobile) {
+      width: 100%;
+    }
+
+    li {
+      cursor: pointer;
+      padding: 0 20px;
+      width: 100%;
+      text-align: center;
+      line-height: $nav-height;
+      color: $color-primary;
+      text-decoration: none;
+
+      @include breakpoint(mobile) {
+        text-align: start;
+      }
+
+      &:hover {
+        background: $color-primary;
+        color: white;
+        transition: 0.4s;
+      }
+    }
+  }
+}
+
+//Estilos para el nav active
+
+.nav-active {
+  background-color: $color-hover !important;
+  color: white !important;
+}

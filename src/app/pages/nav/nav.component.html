@@ -1,0 +1,118 @@
+<section>
+  <div class="navigation">
+  <div class="nav-container">
+    <div class="brand" [routerLink]="['/mostrarLibro']">
+      <img src="https://i.ibb.co/DRR136C/Logo.png" alt="Logo" border="0" />
+      <a routerLink="#!">Vitu</a>
+    </div>
+    <nav>
+      <div class="nav-mobile">
+        <a id="nav-toggle" [class]="hamburguer" (click)="dropdownMobile()"
+          ><span></span
+        ></a>
+      </div>
+      <ul [class]="navList">
+        <li class="p1">
+          <a routerLink="/mostrarLibro" routerLinkActive="nav-active" (click)="desactiveNav()">Buscar libros</a>
+        </li>
+        <li class="p2">
+          <a routerLink="/favoritos" routerLinkActive="nav-active" (click)="desactiveNav()">Favoritos</a>
+        </li>
+        <li class="p3">
+          <a routerLink="/misLibros" routerLinkActive="nav-active" (click)="desactiveNav()">Mis libros</a>
+        </li>
+        <li class="dropdown" >
+          <div class="dropbtn" [class]="navActive">Peticiones</div>
+          <div class="dropdown-content">
+            <li routerLink="/peticiones" routerLinkActive="nav-active" (click)="activeNav()">Enviadas</li>
+            <li routerLink="/solicitudes" routerLinkActive="nav-active" (click)="activeNav()">Recibidas</li>
+          </div>
+        </li>
+        <li class="dropdown">
+          <div class="dropbtn" [class]="navActivePerfil">{{userName}}</div>
+          <div class="dropdown-content">
+            <li routerLink="perfil" (click)="desactiveNav()" (click)="activeNavPerfil()">Editar perfil</li>
+            <li (click)="cerrarSesion()">Cerrar sesión</li>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+</section>
+
+<!---------------- Modal ---------------->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-backdrop="static"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h1 class="lines-effect">¡PUBLICA UN NUEVO LIBRO!</h1>
+        <div class="flex">
+          <div class="izq">
+            <input
+              class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+              type="text"
+              placeholder="título"
+            />
+            <input
+              class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+              type="text"
+              placeholder="autor"
+            />
+            <input
+              class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+              type="text"
+              placeholder="año de publicación"
+            />
+            <input
+              class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+              type="text"
+              placeholder="editorial"
+            />
+            <input
+              class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+              type="text"
+              placeholder="género"
+            />
+            <textarea
+              class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+              cols="30"
+              rows="7"
+              placeholder="Descripción del libro... ¡sin spoilers!"
+            ></textarea>
+          </div>
+          <div class="dcha">
+            <div
+              class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 imagen"
+              id="div-img"
+            ></div>
+            <button
+              class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 cambiar"
+              type="submit"
+              data-dismiss="modal"
+              (click)="(1)"
+            >
+              Cambiar foto
+            </button>
+            <button
+              class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 publicar"
+              type="submit"
+              data-dismiss="modal"
+              (click)="(1)"
+            >
+              Publicar libro
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

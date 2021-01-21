@@ -1,0 +1,52 @@
+/* Variables para colores principales*/
+$color-primary: #38a9b8;
+$color-hover: #287A85;
+$color-blue: #3494CF;
+$color-dark: #394252;
+$color-secondary: #EB4A2F;
+$color-grey: #c4c4c4;
+$color-grey-dark: #484848;
+$color-success: #6ECC89;
+$color-warning:#D9C46A;
+$color-danger: #e05e5e;
+
+/* Variables para colores de categoría */
+$color-pie-blue: #84c1cc;
+$color-pie-sky: #A4C3D2;
+$color-pie-grey: #7B939E;
+$color-pie-brown: #CFA682;
+$color-pie-purple: #cbb5e2;
+$color-pie-orange: #fdca95;
+$color-pie-green: #94dbc1;
+$color-pie-lime: #B4D7A2;
+$color-pie-red: #FFB9B3;
+$color-pie-fucsia: #CAA7BD;
+$color-pie-pink: #edb9d6;
+$color-pie-other: #CFCFC4;
+
+$color-pie-blue-hover: #639199;
+$color-pie-sky-hover: #7B939E;
+$color-pie-grey-hover: #54646B;
+$color-pie-brown-hover: #9C7D62;
+$color-pie-purple-hover: #9E8DB0;
+$color-pie-orange-hover: #C9A277;
+$color-pie-green-hover: #72A895;
+$color-pie-lime-hover: #88A37A;
+$color-pie-red-hover: #CC948F;
+$color-pie-fucsia-hover: #967D8D;
+$color-pie-pink-hover: #BA91A8;
+$color-pie-other-hover: #9C9C94;
+
+/* Variable para tamaño de la barra de navegación */
+$nav-height: 58px;
+
+/* Variables para breakpoints */
+$breakpoint: 768px;
+
+
+// Navigation Variables
+$content-width: 1300px;
+$nav-background: $color-primary;
+
+/* Control para mixins */
+$backgrounds: true !default;

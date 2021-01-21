@@ -1,0 +1,85 @@
+<div id="wrapper" class="card-container" *ngIf="getValor()">
+  <ng-template #noHay>
+    <div class="beta">
+      <nav class="shelf">
+        <a class="book home-page"></a>
+        <a class="book about-us"></a>
+        <a class="book contact"></a>
+        <a class="book faq"></a>
+        <span class="book not-found"></span>
+        <span class="door left"></span>
+        <span class="door right"></span>
+      </nav>
+      <h1>No tienes ninguna petición</h1>
+    </div>
+  </ng-template>
+
+  <div class="row" *ngIf="datosPeticion[0]; else noHay">
+    <div class="col-lg-6 col-md-12 col-sm-12" *ngFor="let item of datosPeticion; let i = index">
+      <div class="book-card book-card-pet" [class]="colorPetition(item.status)">
+        <div class="content-wrapper">
+          <img src="{{ item.photo }}" alt="" class="book-card-img">
+          <div class="card-content">
+            <div class="book-name">{{ item.title }}
+              <div class="book-by">by<strong> {{ item.author }}</strong> </div>
+            </div>
+            <div class="nombreTitular">
+              La petición a 
+              <span class="owner" (click)="openModal(infoUser)"
+                (click)="getUser(item.user_idRequest)">{{ item.nickname }} </span>
+              está {{ item.status }}
+            </div>
+            <div *ngIf="item.status == 'Aceptada' || item.status == 'Rechazada'; else esFalse">
+              <div *ngIf="item.status == 'Aceptada'">
+                <div><strong>{{ item.email }}</strong></div>
+              </div>
+              <button class="v-btn-card cancel" (click)="deletePeticion(item.requested_id, i)">
+                Cerrar
+              </button>
+            </div>
+            <ng-template #esFalse>
+              <button class="v-btn-card cancel" (click)="deletePeticion(item.requested_id, i)">
+                Cancelar petición
+              </button>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!----------------------------------- Modal para informasción del libro ----------------------------------->
+  <ng-template #infoUser>
+    <div class="modal-user">
+      <div class="modal-header">
+        <h3 class="modal-title pull-left">{{user.nickname}}</h3>
+        <button type="button" (click)="modalRef.hide()" class="close pull-right" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-user-top row">
+          <div class="modal-user-info col-8">
+            <div>
+              <p>Nombre</p>
+              <p>{{user.name}}</p>
+            </div>
+            <div>
+              <p>Residencia</p>
+              <p>{{user.place}}</p>
+            </div>
+          </div>
+          <div class="modal-book-img col-4">
+            <img src="{{user.photo}}" alt="">
+          </div>
+        </div>
+        <div class="modal-book-bottom row">
+          <div class="modal-book-desc col-12">
+            <h4>Acerca de mí:</h4>
+            <p>{{user.aboutYou}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

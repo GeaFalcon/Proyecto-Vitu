@@ -1,0 +1,107 @@
+@import "../../app.component.scss";
+
+* {
+  font-family: "Baloo Paaji 2", cursive;
+}
+
+// --------------------------------------------------------------------------------
+.profile-container {
+  min-height: 728px;
+  padding: 64px 0 0;
+
+  form {
+    max-width: 928px;
+    min-height: 560px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+      0 6px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 5px;
+  }
+
+  .top-container {
+    display: flex;
+    justify-content: center;
+
+    .left, .right {
+      .input:first-child, .input:last-child{
+        width: 384px;
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      .input {
+        align-self: flex-end;
+        width: 100%;
+      }
+    }
+
+    div.photo {
+      max-width: 120px;
+      max-height: 120px;
+      margin: 0 auto;
+      margin-top: 80px;
+      border-radius: 50%;
+      // border: 2px solid $color-primary;
+      
+      
+      img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid $color-primary;
+        box-shadow: 0 0 5px 0px $color-grey;
+      }
+    }
+  }
+
+  input,
+  textarea,
+  button {
+    margin-top: 16px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: none;
+    padding: 16px;
+    border-bottom: 2px solid $color-primary;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      border-color: $color-hover;
+    }
+  }
+
+  button {
+    margin: 16px 0;
+    font-size: 16px;
+  }
+
+  div.input {
+    position: relative;
+    span {
+      font-size: 12px;
+      position: absolute;
+      top: 36px;
+      left: 248px;
+      color: $color-danger;
+    }
+  }
+  
+
+  textarea {
+    resize: none;
+  }
+
+  
+}

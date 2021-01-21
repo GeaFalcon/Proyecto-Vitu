@@ -1,0 +1,108 @@
+/*-------------- Estilos generales para botones ---------------*/
+button:disabled,
+button:disabled:hover {
+  background-color: $color-primary;
+  border-color: $color-primary;
+  opacity: .6;
+
+  &:hover {
+    background-color: $color-primary;
+    border-color: $color-primary;
+
+    &:active {
+      transform: none;
+    }
+  }
+}
+
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+/*-------------- Botón primary ---------------*/
+.v-btn {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: $color-primary;
+  padding: .25em 1.5em;
+  border: 2px solid $color-primary;
+  border-radius: 20px;
+  transition: .2s;
+
+  &:hover {
+    background-color: $color-hover;
+    border-color: $color-hover;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &.upload {
+    padding: .5em 3em;
+    font-size: 20px;
+    border-radius: 32px;
+  }
+}
+
+/*--------------- Botón para las cards ---------------*/
+.v-btn-card {
+  font-size: 16px;
+  font-weight: bold;
+  color: $color-primary;
+  background-color: white;
+  padding: .25em 1.5em;
+  border: 2px solid white;
+  border-radius: 20px;
+  transition: .2s;
+
+  &:hover {
+    color: $color-hover;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+/*--------------- Botones para los formularios ---------------*/
+button.v-btn-form {
+  color: white;
+  background-color: $color-primary;
+  padding: .5em 2em;
+  border: 2px solid $color-primary;
+  border-radius: 20px;
+  transition: .3s;
+
+  &:hover {
+    background-color: $color-hover;
+    border-color: $color-hover;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+button.v-btn-form-outline {
+  color: white;
+  font-weight: bold;
+  background-color: transparent;
+  padding: .5em 2em;
+  border: 2px solid white;
+  border-radius: 20px;
+  transition: .3s;
+
+  &:hover {
+    background-color: white;
+    border-color: white;
+    color: $color-primary;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

@@ -1,0 +1,127 @@
+@import '../../app.component.scss';
+body {
+  margin: 0;
+  padding: 2rem;
+  background-color: #446072;
+  font-family: monospace;
+  color: white;
+  overflow: hidden;
+}
+h1 {
+  margin-top: 2rem;
+  text-align: center;
+}
+h1 + p {
+  text-align: center;
+}
+
+
+// -------------------------------------------------------------------------------------------------------------
+
+* {
+  font-family: "Baloo Paaji 2", cursive;
+}
+
+.imagen {
+  height: 240px;
+  width: 80%;
+  background-image: url(../../../../logo.jpeg);
+  background-position: center;
+  background-size: cover;
+  border-radius: 5px;
+  opacity: 0.2;
+  margin: 2%;
+}
+
+input {
+  border: none;
+  text-align: center;
+  border-bottom: 2px solid $color-primary;
+}
+select {
+  border: none;
+  text-align: center;
+  border-bottom: 2px solid $color-primary;
+  cursor: pointer;
+}
+
+textarea {
+  border: none;
+  width: 95%;
+  height: 200px;
+  margin: 2%;
+  border-bottom: 2px solid $color-primary;
+  text-align: center;
+  resize: none;
+}
+.misLibros {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 60px;
+  margin: 0 auto;
+}
+.libro {
+  height: 530px;
+  color: rgb(8, 8, 8);
+  text-align: center;
+  margin: 0 auto;
+}
+.contenedor {
+  width: 266px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.foto {
+  margin: 0 auto;
+  width: 260px;
+  height: 360px;
+  background-color: rgb(179, 172, 172);
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+
+.boton {
+  text-align: center;
+  padding-top: 32px;
+}
+
+input,
+select {
+  margin: 2%;
+  width: 100%;
+  padding: 4px 8px;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+.modal-body {
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  margin: 0 auto;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.izq {
+  padding: 20px;
+  text-align: center;
+}
+
+.modal-dialog {
+  margin-top: 16px !important;
+}

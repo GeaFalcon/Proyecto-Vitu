@@ -1,0 +1,78 @@
+<header>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</header>
+<div id="fondo"></div>
+<div id="wrapper">
+  <!-- ------------------------------------------- -->
+
+<!-- <div class="subirelementos" *ngIf="getValor()">
+    <div id="cajafoto">
+      <form action="" [formGroup]="editForm">
+        <div class="cambiarperfil">
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+
+  <div class="profile-container" *ngIf="getValor()">
+    <form action="" [formGroup]="editForm">
+      <div class="row top-container">
+        <div class="left col-lg-5 col-md-5 col-sm-12">
+          <div class="input">
+            <input type="text" placeholder="Name" formControlName="name" #name/>
+            <span *ngIf="editForm.controls['name'].hasError('minlength')">Nombre demasiado corto</span>
+            <span *ngIf="editForm.controls['name'].hasError('required')">Nombre obligatorio *</span>
+            <span *ngIf="editForm.controls['name'].hasError('maxlength')">Nombre demasiado largo</span>
+          </div>
+          <div class="input">
+            <input type="text" placeholder="Nickname" formControlName="nickname" #nickname />
+            <span *ngIf="editForm.controls['nickname'].hasError('minlength')">Nickname demasiado corto</span>
+            <span *ngIf="editForm.controls['nickname'].hasError('required')">Nickname requerido *</span>
+            <span *ngIf="editForm.controls['nickname'].hasError('maxlength')">Nickname demasiado largo</span>
+          </div>
+          <div class="input">
+            <input type="text" placeholder="Ciudad" formControlName="place" #place />
+            <span *ngIf="editForm.controls['place'].hasError('required')">Ciudad requerida *</span>
+          </div>
+        </div>
+
+        <div class="middle col">
+          <div class="photo">
+          <img src="{{ userData.photo }}" id=""/>
+        </div>
+        </div>
+
+        <div class="right col-lg-5 col-md-5 col-sm-12">
+          <div class="input">
+            <input type="password" placeholder="Contraseña actual" #password2 formControlName="password2" />
+            <span *ngIf="editForm.controls['password2'].hasError('required')">Contraseña requerida *</span>
+          </div>
+          <div class="input">
+            <input type="password" placeholder="Nueva contraseña" #password1 formControlName="password1" />
+          </div>
+          <div class="input">
+            <input type="text" placeholder="Correo" id="email" formControlName="email" #email />
+            <span *ngIf="editForm.controls['email'].hasError('required')">Email requerido *</span>
+            <span *ngIf="editForm.controls['email'].hasError('pattern')">Formato no valido</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row bot-container">
+        <div id="input" class="col-12">
+          <input type="text" placeholder="URL Foto" id="photo" formControlName="photo" #photo />
+        </div>
+        <div class="col-12">
+          <textarea class="col-12" name="" id=""  rows="6"  placeholder="Sobre ti" formControlName="aboutYou"
+            #aboutYou></textarea>
+        </div>
+      </div>
+
+      <button class="v-btn" [disabled]="editForm.invalid"
+        (click)="editUser( name.value, nickname.value, place.value, password1.value, email.value, photo.value, aboutYou.value, password2.value)">
+        Guardar cambios
+      </button>
+    </form>
+  </div>

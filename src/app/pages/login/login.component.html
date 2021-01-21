@@ -1,0 +1,83 @@
+<!------------------------------------ Nuevo inicio de sesión + registro ---------------------------------->
+<div class="main-container">
+  <div [class]="container" id="container">
+    <div class="form-container sign-up-container">
+      <form action="" [formGroup]="registroForm">
+        <h1>Crea tu cuenta</h1>
+        <div class="nombre">
+          <input type="text" placeholder="Nombre" #name formControlName="name" /><br />
+          <span *ngIf="registroForm.controls['name'].hasError('minlength')">
+            Por favor, intoduce un nombre de al menos 2 caracteres *
+          </span>
+          <span *ngIf="registroForm.controls['name'].hasError('maxlength')">
+            No puedes exceder los 20 caracteres *
+          </span>
+        </div>
+        <div id="nick">
+          <input type="text" placeholder="Nickname" #nickReg formControlName="nickReg" /><br />
+          <span *ngIf="registroForm.controls['nickReg'].hasError('minlength')">
+            Por favor, intoduce un nickname de al menos 4 caracteres *
+          </span>
+          <span *ngIf="registroForm.controls['nickReg'].hasError('maxlength')">
+            No puedes exceder los 12 caracteres *
+          </span>
+        </div>
+        <div class="email">
+          <input type="text" placeholder="Email" #email formControlName="email" /><br />
+          <span *ngIf="registroForm.controls['email'].hasError('pattern')">
+            Email no válido *
+          </span>
+        </div>
+        <div class="place">
+          <input type="address" placeholder="Ciudad" #place formControlName="place" />
+        </div>
+        <div class="pass">
+          <input type="password" placeholder="Contraseña" #passReg formControlName="passReg" /><br />
+          <span *ngIf="registroForm.controls['passReg'].hasError('pattern')">
+            La contraseña debe tener una longitud minima de 8 caracteres, mayusculas, minusculas y numeros *
+          </span>
+        </div>
+        <div class="pass2">
+          <input type="password" placeholder="Repetir contraseña" #pass2 formControlName="pass2" /><br />
+          <span *ngIf="registroForm.controls.pass2.errors?.matchPass">
+            Las contraseñas deben coincidir *
+          </span>
+        </div>
+        <button type="submit" class="v-btn-form" type="submit" [disabled]="!registroForm.valid"
+          (click)="addUser(nickReg.value, name.value, email.value, place.value, passReg.value)">
+          Registrarse
+        </button>
+      </form>
+    </div>
+
+    <div class="form-container sign-in-container">
+      <form action="#" [formGroup]="loginForm">
+        <div class="logo-container">
+          <img src="../../../../logo.jpeg" alt="">
+        </div>
+        <h2>Inicia sesión</h2>
+        <input type="text" placeholder="Nickname" formControlName="nickname" #nick />
+        <input type="password" placeholder="Contraseña" formControlName="pass" #pass />
+        <a href="#">¿Olvidaste tu contraseña?</a>
+        <button class="v-btn-form" type="submit" [disabled]="!loginForm.valid"
+          (click)="authLogin2(nick.value,pass.value)">
+          Iniciar
+        </button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>¡Bienvenido de nuevo!</h1>
+          <p>Para mantenerte conectado, por favor, inicia sesión con tu información personal</p>
+          <button class="v-btn-form-outline" id="signIn" (click)="signIn()">Iniciar</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>¡Bienvenido a <span>Vitu</span>!</h1>
+          <p>Lee libros y comparte historias</p>
+          <button class="v-btn-form-outline" id="signUp" (click)="signUp()">Regístrate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

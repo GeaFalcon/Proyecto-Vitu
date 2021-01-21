@@ -1,0 +1,47 @@
+/* Importaciones SCSS */
+@import "./scss/mixins.scss";
+@import "./scss/variables.scss";
+@import "./scss/buttons.scss";
+@import "./scss/cards.scss";
+@import "./scss/book-animation.scss";
+
+/* Control de estilos */
+* {
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  vertical-align: baseline;
+  font-family: "Baloo Paaji 2", cursive;
+}
+
+.card-container {
+  margin: 0 auto;
+  max-width: 1280px;
+  min-height: calc(100vh - 216px) !important;
+  padding: 0px 32px 64px 32px;
+  min-height: 768px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 8px 0 8px -4px rgba(136, 136, 136, 0.6), -8px 0 8px -4px rgba(151, 151, 151, 0.6);
+
+}
+
+// ------------------------------------------ Modal estilos generales ------------------------------------------------
+.modal-dialog {
+  margin-top: 10% !important;
+}
+
+.modal-header {
+  button {
+    transition: .3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+}
+
+

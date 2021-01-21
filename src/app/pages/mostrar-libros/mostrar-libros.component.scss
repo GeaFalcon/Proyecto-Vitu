@@ -1,0 +1,822 @@
+/*------------------------------------------------------------------------------------*/
+@import "../../app.component.scss";
+
+
+/*------------------------------------- Mixin para colores de las cards -------------------------------------*/
+
+
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+/*------------------------------ Estilos para carousel ------------------------------ */
+.carousel-control-prev {
+  width: 72px;
+  height: 232px;
+
+}
+
+.carousel-control-next {
+  width: 72px;
+  height: 232px;
+}
+
+.carousel-inner{
+  margin-top: 16px;
+  padding: 0 16px 0 16px;
+}
+
+.card-sliders {
+  padding: 0px 8px 0 8px;
+}
+
+.card-slider {
+  padding: 0 8px;
+}
+
+.carousel-fade {
+  margin-bottom: 32px;
+}
+
+
+/*----------------------- Contenedor de la book store -----------------------------*/
+/* Estilos para menú de filtros */
+.main-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  min-width: 1280px;
+  white-space: nowrap;
+  padding: 0 40px 16px 16px;
+  border-bottom: 1px solid $color-grey;
+  position: sticky;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.book-types {
+  // margin-left: auto;
+  cursor: pointer;
+  max-width: 1280px;
+}
+
+.book-type {
+  background-color: transparent;
+  font-size: 14px;
+  border: none;
+  position: relative;
+  transition: 0.2s;
+  margin-left: 20px;
+  padding: 0;
+
+  &:visited,
+  &:hover,
+  &:focus {
+    -webkit-text-stroke: .4px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 107px;
+      height: 2px;
+      bottom: -24px;
+      right: 0;
+      color: $color-primary;
+      background-color: $color-primary;
+      box-shadow: 0px -2px 5px 0px $color-primary;
+    }
+  }
+
+  &:nth-child(2):before {
+    width: 49px;
+    background-color: $color-pie-sky;
+    box-shadow: 0px -3px 5px 0px $color-pie-sky;
+  }
+
+  &:nth-child(3):before {
+    width: 50px;
+    background-color:  $color-pie-green;
+    box-shadow: 0px -2px 5px 0px  $color-pie-green;
+  }
+
+  &:nth-child(4):before {
+    width: 89px;
+    background-color:  $color-pie-purple;
+    box-shadow: 0px -2px 5px 0px  $color-pie-purple;
+  }
+
+  &:nth-child(5):before {
+    width: 54px;
+    background-color:  $color-pie-brown;
+    box-shadow: 0px -3px 5px 0px  $color-pie-brown;
+  }
+
+  &:nth-child(6):before {
+    width: 62px;
+    background-color:  $color-pie-orange;
+    box-shadow: 0px -3px 5px 0px  $color-pie-orange;
+  }
+
+  &:nth-child(7):before {
+    width: 51px;
+    background-color:  $color-pie-blue;
+    box-shadow: 0px -2px 5px 0px  $color-pie-blue;
+  }
+
+  &:nth-child(8):before {
+    width: 54px;
+    background-color:  $color-pie-lime;
+    box-shadow: 0px -3px 5px 0px  $color-pie-lime;
+  }
+
+  &:nth-child(9):before {
+    width: 64.81px;
+    background-color:  $color-pie-pink;
+    box-shadow: 0px -3px 5px 0px  $color-pie-pink;
+  }
+
+  &:nth-child(10):before {
+    width: 78px;
+    ;
+    background-color:  $color-pie-grey;
+    box-shadow: 0px -3px 5px 0px  $color-pie-grey;
+  }
+
+  &:nth-child(11):before {
+    width: 43px;
+    background-color:  $color-pie-fucsia;
+    box-shadow: 0px -3px 5px 0px  $color-pie-fucsia;
+  }
+
+  &:nth-child(12):before {
+    width: 34px;
+    ;
+    background-color:  $color-pie-other;
+    box-shadow: 0px -2px 5px 0px  $color-pie-other;
+
+    &:active {
+      background-color:  $color-pie-other;
+      box-shadow: 0px -2px 5px 0px  $color-pie-other;
+    }
+  }
+}
+
+.book-store {
+  display: flex;
+  justify-content: center;
+  max-width: 1280px;
+  flex-direction: column;
+  margin: 0 auto;
+  //  box-shadow: 0px 2px 50px 10px rgba(0, 0, 0, 0.21);
+}
+
+/* ------------------------ Estilos para barra de filtros -------------------------------*/
+.main-wrapper {
+  width: 100%;
+  max-height: 128px;
+  display: flex;
+  flex-grow: 1;
+  padding-top: 20px;
+  background: white;
+  overflow: hidden;
+  border-top: 4px solid $color-grey;
+  position: sticky;
+  top: 58px;
+  z-index: 20;
+  
+  // linear-gradient(0deg, rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0) 100%)
+}
+
+.home-card-container {
+  padding: 0px 32px 64px;
+  background-color: rgba(255, 255, 255, 0.9);
+  min-height: calc(100vh - 216px) !important;
+  // overflow-y: scroll;
+  // max-height: 744px;
+  // min-height: 744px;
+  // box-shadow: 8px 0 8px -4px rgba(136, 136, 136, 0.6), -8px 0 8px -4px rgba(151, 151, 151, 0.6);
+}
+
+.popular-books {
+  flex-grow: 1;
+  padding: 0 30px;
+  overflow-y: auto;
+}
+
+.genre {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.buscador {
+  font-size: 14px;
+  border: none;
+  border-bottom: 2px solid $color-grey;
+  padding: 8px 16px;
+  width: 104px;
+  transition: 0.4s;
+
+  &:hover {
+    border-color: $color-pie-blue;
+  }
+
+  &:focus {
+    border: 2px solid $color-pie-blue;
+    width: 256px;
+    border-radius: 50px;
+  }
+}
+
+/* --------------------------------------------- Colores para cards de book-store ---------------------------*/
+.book-card,
+.book-cards.book-carousel .book-card {
+  background-color: $color-pie-blue;
+
+  .v-btn {
+    // background-color: $color-pie-blue-hover;
+    margin-right: 16px;
+
+    &:hover {
+      color: $color-primary;
+      background-color: white;
+      border-color: white;
+    }
+  }
+
+  .v-btn-card {
+    color: $color-primary;
+
+    &:hover {
+      color: white;
+      background-color: $color-primary;
+      border-color: $color-primary;
+    }
+  }
+
+  &.misterio {
+    background-color: $color-pie-sky;
+
+    .v-btn {
+      background-color: $color-pie-sky-hover;
+      border-color: $color-pie-sky-hover;
+
+      &:hover {
+        color: $color-pie-sky-hover;
+        background-color: white;
+        border-color: white;
+      }
+    }
+
+    .v-btn-card {
+      color: $color-pie-sky-hover;
+  
+      &:hover {
+        color: white;
+        background-color: $color-pie-sky-hover;
+        border-color: $color-pie-sky-hover;
+      }
+    }
+  }
+
+  &.fantasia {
+    background-color: $color-pie-green;
+
+    .v-btn {
+      background-color: $color-pie-green-hover;
+      border-color: $color-pie-green-hover;
+
+      &:hover {
+        color: $color-pie-green-hover;
+        background-color: white;
+        border-color: white;
+      }
+    }
+
+    .v-btn-card {
+      color: $color-pie-green-hover;
+  
+      &:hover {
+        color: white;
+        background-color: $color-pie-green-hover;
+        border-color: $color-pie-green-hover;
+      }
+    }
+  }
+
+  &.ciencia-ficcion {
+    background-color: $color-pie-purple;
+    .v-btn {
+      background-color: $color-pie-purple-hover;
+      border-color: $color-pie-purple-hover;
+
+      &:hover {
+        color: $color-pie-purple-hover;
+        background-color: white;
+        border-color: white;
+      }
+    }
+
+    .v-btn-card {
+      color: $color-pie-purple-hover;
+  
+      &:hover {
+        color: white;
+        background-color: $color-pie-purple-hover;
+        border-color: $color-pie-purple-hover;
+      }
+    }
+  }
+
+  &.historico {
+    background-color: $color-pie-brown;
+    .v-btn {
+      background-color: $color-pie-brown-hover;
+      border-color: $color-pie-brown-hover;
+
+      &:hover {
+        color: $color-pie-brown-hover;
+        background-color: white;
+        border-color: white;
+      }
+    }
+
+    .v-btn-card {
+      color: $color-pie-brown-hover;
+  
+      &:hover {
+        color: white;
+        background-color: $color-pie-brown-hover;
+        border-color: $color-pie-brown-hover;
+      }
+    }
+  }
+
+  &.biografico {
+    background-color: $color-pie-orange;
+    .v-btn {
+      background-color: $color-pie-orange-hover;
+      border-color: $color-pie-orange-hover;
+
+      &:hover {
+        color: $color-pie-orange-hover;
+        background-color: white;
+        border-color: white;
+      }
+    }
+
+    .v-btn-card {
+      color: $color-pie-orange-hover;
+  
+      &:hover {
+        color: white;
+        background-color: $color-pie-orange-hover;
+        border-color: $color-pie-orange-hover;
+      }
+    }
+  }
+
+  &.filosofia {
+    background-color: $color-pie-blue;
+    .v-btn {
+      background-color: $color-pie-blue-hover;
+      border-color: $color-pie-blue-hover;
+
+      &:hover {
+        color: $color-pie-blue-hover;
+        background-color: white;
+        border-color: white;
+      }
+    }
+
+    .v-btn-card {
+      color: $color-pie-blue-hover;
+  
+      &:hover {
+        color: white;
+        background-color: $color-pie-blue-hover;
+        border-color: $color-pie-blue-hover;
+      }
+    }
+  }
+
+  &.aventura {
+    background-color: $color-pie-lime;
+    .v-btn {
+      background-color: $color-pie-lime-hover;
+      border-color: $color-pie-lime-hover;
+
+      &:hover {
+        color: $color-pie-lime-hover;
+        background-color: white;
+        border-color: white;
+      }
+    }
+
+    .v-btn-card {
+      color: $color-pie-lime-hover;
+  
+      &:hover {
+        color: white;
+        background-color: $color-pie-lime-hover;
+        border-color: $color-pie-lime-hover;
+      }
+    }
+  }
+
+  &.romantico {
+     background-color: $color-pie-pink;
+    .v-btn {
+      background-color: $color-pie-pink-hover;
+      border-color: $color-pie-pink-hover;
+
+      &:hover {
+        color: $color-pie-pink-hover;
+        background-color: white;
+        border-color: white;
+      }
+    }
+
+    .v-btn-card {
+      color: $color-pie-pink-hover;
+  
+      &:hover {
+        color: white;
+        background-color: $color-pie-pink-hover;
+        border-color: $color-pie-pink-hover;
+      }
+    }
+  }
+
+  &.novela-negra {
+    background-color: $color-pie-grey;
+    .v-btn {
+      background-color: $color-pie-grey-hover;
+      border-color: $color-pie-grey-hover;
+
+      &:hover {
+        color: $color-pie-grey-hover;
+        background-color: white;
+        border-color: white;
+      }
+    }
+
+    .v-btn-card {
+      color: $color-pie-grey-hover;
+  
+      &:hover {
+        color: white;
+        background-color: $color-pie-grey-hover;
+        border-color: $color-pie-grey-hover;
+      }
+    }
+  }
+
+  &.comics {
+    background-color: $color-pie-fucsia;
+    .v-btn {
+      background-color: $color-pie-fucsia-hover;
+      border-color: $color-pie-fucsia-hover;
+
+      &:hover {
+        color: $color-pie-fucsia-hover;
+        background-color: white;
+        border-color: white;
+      }
+    }
+
+    .v-btn-card {
+      color: $color-pie-fucsia-hover;
+  
+      &:hover {
+        color: white;
+        background-color: $color-pie-fucsia-hover;
+        border-color: $color-pie-fucsia-hover;
+      }
+    }
+  }
+
+  &.otros {
+    background-color: $color-pie-other;
+    .v-btn {
+      background-color: $color-pie-other-hover;
+      border-color: $color-pie-other-hover;
+
+      &:hover {
+        color: $color-pie-other-hover;
+        background-color: white;
+        border-color: white;
+      }
+    }
+
+    .v-btn-card {
+      color: $color-pie-other-hover;
+  
+      &:hover {
+        color: white;
+        background-color: $color-pie-other-hover;
+        border-color: $color-pie-other-hover;
+      }
+    }
+  }
+}
+
+
+
+// // ------------------------------------------ Modal info libro ------------------------------------------------
+ng-template {
+  position: absolute;
+  top: 600px;
+}
+
+.modal-book {
+  .modal-header {
+    border-bottom: 0;
+
+    h3 {
+      border-bottom: 2px solid $color-primary;
+      padding: 0 0.5em;
+    }
+  }
+
+  .modal-book-body {
+    .modal-book-top {
+
+      .modal-book-top,
+      .modal-book-img {
+        padding: 0;
+      }
+
+      .modal-book-info {
+        div {
+          padding: 0.5em 0.5em;
+          border-bottom: 1px solid $color-primary;
+
+          p {
+            margin-bottom: 0;
+
+            &:first-child {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      .modal-book-img {
+        max-width: 120px;
+        height: 168px;
+        margin: 0 auto;
+        border-radius: 0.3rem;
+        box-shadow: 4px 4px 3px 0px $color-grey-dark;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 0.3rem;
+        }
+      }
+    }
+
+    .modal-book-desc {
+      margin-top: 2em;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .modal-footer {
+    justify-content: center;
+    border: none;
+  }
+}
+
+// // ------------------------------------------ Modal para peticiones ------------------------------------------------
+.modal-petition {
+  .modal-header {
+    justify-content: center;
+    border: none;
+
+    h3 {
+      border-bottom: 2px solid $color-primary;
+      padding: 0 .5em;
+    }
+  }
+
+  .modal-body {
+    display: flex;
+    justify-content: center;
+
+    div:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+
+      select {
+        border: 1px solid $color-grey-dark;
+        border-radius: 5px;
+        margin-bottom: 1em;
+        width: 380px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+// // ------------------------------------------ Modal aviso favoritos/peticion realizada ------------------------------------------------
+.modal-prompt-fav,
+.modal-prompt-petition {
+  .modal-body {
+    button {
+      position: absolute;
+      right: 16px;
+      top: 8px;
+      z-index: 999;
+      transition: 0.2s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+
+      &:active {
+        transform: scale(1);
+      }
+    }
+  }
+
+  .modal-footer {
+    border: none;
+    justify-content: center;
+  }
+}
+
+.success-checkmark {
+  width: 80px;
+  margin: 0 auto;
+
+  .check-icon {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    border-radius: 50%;
+    box-sizing: content-box;
+    border: 4px solid $color-success;
+
+    &::before {
+      top: 3px;
+      left: -2px;
+      width: 30px;
+      transform-origin: 100% 50%;
+      border-radius: 100px 0 0 100px;
+    }
+
+    &::after {
+      top: 0;
+      left: 30px;
+      width: 60px;
+      transform-origin: 0 50%;
+      border-radius: 0 100px 100px 0;
+      animation: rotate-circle 4.25s ease-in;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      height: 100px;
+      position: absolute;
+      background: #ffffff;
+      transform: rotate(-45deg);
+    }
+
+    .icon-line {
+      height: 5px;
+      background-color: #4caf50;
+      display: block;
+      border-radius: 2px;
+      position: absolute;
+      z-index: 10;
+
+      &.line-tip {
+        top: 46px;
+        left: 14px;
+        width: 25px;
+        transform: rotate(45deg);
+        animation: icon-line-tip 0.75s;
+      }
+
+      &.line-long {
+        top: 38px;
+        right: 8px;
+        width: 47px;
+        transform: rotate(-45deg);
+        animation: icon-line-long 0.75s;
+      }
+    }
+
+    .icon-circle {
+      top: -4px;
+      left: -4px;
+      z-index: 10;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      position: absolute;
+      box-sizing: content-box;
+      border: 4px solid rgba(76, 175, 80, 0.5);
+    }
+
+    .icon-fix {
+      top: 8px;
+      width: 5px;
+      left: 26px;
+      z-index: 1;
+      height: 85px;
+      position: absolute;
+      transform: rotate(-45deg);
+      background-color: #ffffff;
+    }
+  }
+}
+
+@keyframes rotate-circle {
+  0% {
+    transform: rotate(-45deg);
+  }
+
+  5% {
+    transform: rotate(-45deg);
+  }
+
+  12% {
+    transform: rotate(-405deg);
+  }
+
+  100% {
+    transform: rotate(-405deg);
+  }
+}
+
+@keyframes icon-line-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px;
+  }
+
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px;
+  }
+
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 45px;
+  }
+}
+
+@keyframes icon-line-long {
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+
+  84% {
+    width: 55px;
+    right: 0px;
+    top: 35px;
+  }
+
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px;
+  }
+}
